@@ -10,8 +10,7 @@ import java.util.Date;
 @NoArgsConstructor
 @ToString
 @Builder
-public class cliente {
-    int id;
+public class Client {
     private String name;
     private String IDnumber;
     private Date date_birth;

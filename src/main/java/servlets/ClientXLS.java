@@ -6,20 +6,20 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import mapping.dtos.ClientDTO;
-import services.ToyStorelnt;
+import services.ClientService;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 import java.util.List;
 
-@WebServlet({"/students.xls", "/students.html", "/students"})
-public class StudentXLS extends HttpServlet {
-
+@WebServlet({"/Client.xls", "/Client.html", "/Client"})
+public class ClientXLS extends HttpServlet {
+    public ClientService service;
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException,
             IOException {
-        List<ClientDTO> client = ToyStorelnt.list;
+        List<ClientDTO> client = service.listar();
+
         resp.setContentType("text/html;charset=UTF-8");
         String servletPath = req.getServletPath();
         boolean esXls = servletPath.endsWith(".xls");
@@ -48,10 +48,9 @@ public class StudentXLS extends HttpServlet {
             out.println("</tr>");
             client.forEach(p ->{
                 out.println("<tr>");
-                out.println("<td>" + p.getId() + "</td>");
-                out.println("<td>" + p.getName() + "</td>");
-                out.println("<td>" + p.getEmail() + "</td>");
-                out.println("<td>" + p.getSemester() + "</td>");
+                out.println("<td>" + p.name() + "</td>");
+                out.println("<td>" + p.iDnumber() + "</td>");
+                out.println("<td>" + p.date_birth() + "</td>");
                 out.println("</tr>");
             });
             out.println("</table>");

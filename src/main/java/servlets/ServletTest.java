@@ -11,7 +11,7 @@ import java.io.PrintWriter;
 import java.util.Enumeration;
 
 @WebServlet(value = "/test")
-public class ProductServlet extends HttpServlet {
+public class ServletTest extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException,
             IOException {
